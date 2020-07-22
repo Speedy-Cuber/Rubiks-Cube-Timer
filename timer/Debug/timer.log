@@ -1,0 +1,3 @@
+﻿  Scrambler.cpp
+C:\Users\anono\source\repos\timer\timer\Scrambler.cpp(123): warning C4715: 'scramble_f': not all control paths return a value
+  timer.vcxproj -> C:\Users\anono\source\repos\timer\Debug\timer.exe

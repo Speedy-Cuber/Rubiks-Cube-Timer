@@ -1,0 +1,6 @@
+Resolved bugs
+Averages now work
+The on screen timer shows the correct time
+2x2 scrambles now work
+
+Also took care of some warnings in the source code.
