@@ -212,7 +212,7 @@ int currentsessionsize_f() {
 
 void deletesolve_f() {
 	if (solves.size() > 1) {
-		solves.erase(solves.end() - 1);
+		solves.erase(solves.end() - 2);
 		std::cout << "Deleted solve";
 		std::this_thread::sleep_for(std::chrono::seconds(1));
 		screen_f(0);
