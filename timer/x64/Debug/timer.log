@@ -1,1 +1,3 @@
-﻿  timer.vcxproj -> C:\Users\anono\source\repos\Speedy-Cuber\timer\x64\Debug\timer.exe
+﻿  Scrambler.cpp
+C:\Users\anono\source\repos\Speedy-Cuber\timer\timer\Scrambler.cpp(141): warning C4715: 'scramble_f': not all control paths return a value
+  timer.vcxproj -> C:\Users\anono\source\repos\Speedy-Cuber\timer\x64\Debug\timer.exe
