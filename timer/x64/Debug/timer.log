@@ -1,5 +1,1 @@
-﻿  Solve Storage.cpp
-C:\Users\anono\source\repos\Speedy-Cuber\timer\timer\Solve Storage.cpp(53,42): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\anono\source\repos\Speedy-Cuber\timer\timer\Solve Storage.cpp(155,30): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\anono\source\repos\Speedy-Cuber\timer\timer\Solve Storage.cpp(210,22): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-  timer.vcxproj -> C:\Users\anono\source\repos\Speedy-Cuber\timer\x64\Debug\timer.exe
+﻿  timer.vcxproj -> C:\Users\anono\source\repos\Speedy-Cuber\timer\x64\Debug\timer.exe

@@ -93,13 +93,28 @@ std::string fourandfive(int scramble_length) {
 	while (i < scramble_length) {
 		x = rannum_f(6);
 		y = rannum_f(6);
-		if (xarray[i - 1] != x && ((yarray[i - 1] > 3 && y < 4) || (yarray[i - 1] < 4 && y > 3))) {
+		if (xarray[i - 1] != x) {
 			if (xarray[i - 2] == x) {
 				if (x == xarray[i - 2] && ((x + xarray[i - 1]) != 3 && (x + xarray[i - 1]) != 7 && (x + xarray[i - 1]) != 11)) {
 						xarray[i] = x;
 						yarray[i] = y;
 						scramble = scramble + moves[6 * x + y];
 						i++;
+				}
+			}
+			else {
+				xarray[i] = x;
+				scramble = scramble + moves[6 * x + y];
+				i++;
+			}
+		}
+		else if ((yarray[i - 1] > 3 && y < 4) || (yarray[i - 1] < 4 && y > 3)) {
+			if (xarray[i - 2] == x) {
+				if (x == xarray[i - 2] && ((x + xarray[i - 1]) != 3 && (x + xarray[i - 1]) != 7 && (x + xarray[i - 1]) != 11)) {
+					xarray[i] = x;
+					yarray[i] = y;
+					scramble = scramble + moves[6 * x + y];
+					i++;
 				}
 			}
 			else {
