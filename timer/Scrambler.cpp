@@ -33,7 +33,7 @@ std::string twoandthree(int scramble_length, int gen) {
 		y = rannum_f(3);
 		if (xarray[i - 1] != x) {
 			if (xarray[i - 2] == x) {
-				if ((x + xarray[i - 1]) != 3 && (x + xarray[i - 1]) != 7 && (x + xarray[i - 1]) != 11) {
+				if ((x + xarray[i - 1]) != 1 && (x + xarray[i - 1]) != 5 && (x + xarray[i - 1]) != 9) {
 					xarray[i] = x;
 					scramble = scramble + moves[3 * x + y];
 					i++;
@@ -75,7 +75,7 @@ std::string fourandfive(int scramble_length) {
 		y = rannum_f(3);
 		if (xarray[i - 1] != x) {
 			if (xarray[i - 2] == x) {
-				if (x == xarray[i - 2] && ((x + xarray[i - 1]) != 3 && (x + xarray[i - 1]) != 7 && (x + xarray[i - 1]) != 11)) {
+				if ((x + xarray[i - 1]) != 1 && (x + xarray[i - 1]) != 5 && (x + xarray[i - 1]) != 9) {
 					xarray[i] = x;
 					scramble = scramble + moves[6 * x + y];
 					i++;
@@ -95,7 +95,7 @@ std::string fourandfive(int scramble_length) {
 		y = rannum_f(6);
 		if (xarray[i - 1] != x) {
 			if (xarray[i - 2] == x) {
-				if (x == xarray[i - 2] && ((x + xarray[i - 1]) != 3 && (x + xarray[i - 1]) != 7 && (x + xarray[i - 1]) != 11)) {
+				if ((x + xarray[i - 1]) != 1 && (x + xarray[i - 1]) != 5 && (x + xarray[i - 1]) != 9) {
 						xarray[i] = x;
 						yarray[i] = y;
 						scramble = scramble + moves[6 * x + y];
@@ -110,7 +110,7 @@ std::string fourandfive(int scramble_length) {
 		}
 		else if ((yarray[i - 1] > 3 && y < 4) || (yarray[i - 1] < 4 && y > 3)) {
 			if (xarray[i - 2] == x) {
-				if (x == xarray[i - 2] && ((x + xarray[i - 1]) != 3 && (x + xarray[i - 1]) != 7 && (x + xarray[i - 1]) != 11)) {
+				if ((x + xarray[i - 1]) != 1 && (x + xarray[i - 1]) != 5 && (x + xarray[i - 1]) != 9) {
 					xarray[i] = x;
 					yarray[i] = y;
 					scramble = scramble + moves[6 * x + y];
