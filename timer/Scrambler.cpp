@@ -33,7 +33,7 @@ std::string twoandthree(int scramble_length, int gen) {
 		y = rannum_f(3);
 		if (xarray[i - 1] != x) {
 			if (xarray[i - 2] == x) {
-				if (x == xarray[i - 2] && ((x + xarray[i - 1]) != 3 && (x + xarray[i - 1]) != 7 && (x + xarray[i - 1]) != 11)) {
+				if ((x + xarray[i - 1]) != 3 && (x + xarray[i - 1]) != 7 && (x + xarray[i - 1]) != 11) {
 					xarray[i] = x;
 					scramble = scramble + moves[3 * x + y];
 					i++;
