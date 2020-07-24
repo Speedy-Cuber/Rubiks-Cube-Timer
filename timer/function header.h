@@ -13,5 +13,6 @@ double truncate_f(double time);
 double get_average_total_f();
 double get_average_f(unsigned int averagenumber);
 int currentsessionsize_f();
-void deletesolve_f();
+void deletesolve_f(bool deletespecificsolve);
 void plustwo_f();
+void print_times_f();

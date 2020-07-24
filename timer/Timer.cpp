@@ -46,5 +46,4 @@ void timer_f(int layer_number) {
 	duration = end - start;
 	time = truncate_f(duration.count());
 	set_time_f(time);
-	void screenoff_f();
 }
