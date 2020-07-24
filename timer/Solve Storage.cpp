@@ -4,19 +4,23 @@
 #include <fstream>
 #include <sstream>
 #include <thread>
+#include <conio.h>
 #include "function header.h"
 
 struct solve {
 	double time;
 	std::string scramble;
+	bool plustwo;
 	solve(std::string in) {
 		scramble = in;
 		time = 0;
+		plustwo = false;
 		log("scramble added");
 	}
-	solve(double in, std::string inw) {
+	solve(double in, std::string inw, bool inb) {
 		time = in;
 		scramble = inw;
+		plustwo = inb;
 		log("solve read");
 	}
 };
@@ -46,7 +50,7 @@ int num_of_solves(int layer_number) {
 }
 
 void numsolveswrite(int layer_number) {
-	int number[4];
+	unsigned int number[4];
 	for (int i = 0; i < 4; i++) {
 		number[i] = num_of_solves(i);
 	}
@@ -58,6 +62,15 @@ void numsolveswrite(int layer_number) {
 	}
 	write.close();
 	log("wrote to session_size");
+}
+
+bool stringtobool(std::string in) {
+	if (in == "true") {
+		return 1;
+	}
+	else {
+		return 0;
+	}
 }
 
 void read(int layer_number) {
@@ -75,16 +88,29 @@ void read(int layer_number) {
 	std::string all;
 	std::string in;
 	std::string intime;
+	std::string plustwo;
+	bool plus_two = false;
 	double time;
 	while (std::getline(read, all)) {
 		std::stringstream ss(all);
 		std::getline(ss, intime, ',');
 		time = std::stod(intime);
 		std::getline(ss, in, ',');
-		solves.emplace_back(time, in);
+		std::getline(ss, plustwo, ',');
+		plus_two = stringtobool(plustwo);
+		solves.emplace_back(time, in, plus_two);
 	}
 	read.close();
 	log("session file read");
+}
+
+std::string booltostring(bool in) {
+	if (in) {
+		return "true";
+	}
+	else {
+		return "false";
+	}
 }
 
 void write(int layer_number) {
@@ -93,7 +119,8 @@ void write(int layer_number) {
 	write.open(filename[layer_number]);
 	for (unsigned int i = 0; i < std::size(solves); i++) {
 		write << solves[i].time << ',';
-		write << solves[i].scramble <<std::endl;
+		write << solves[i].scramble << ',';
+		write << booltostring(solves[i].plustwo) << std::endl;
 	}
 	write.close();
 	log("wrote to session");
@@ -210,10 +237,30 @@ int currentsessionsize_f() {
 	return solves.size();
 }
 
-void deletesolve_f() {
-	if (solves.size() > 1) {
+void deletesolve_f(bool deletespecificsolve) {
+	if(deletespecificsolve){
+		for (int i = 0; i < solves.size() - 1; i++) {
+			std::cout << "Solve " << i + 1 << ":	" << solves[i].time << "\n";
+		}
+		std::cout << "Enter solve number to delete: ";
+		int solvetodelete = 0;
+		std::cin >> solvetodelete;
+		solvetodelete = solvetodelete - 1;
+		if (solvetodelete < solves.size() - 1) {
+			solves.erase(solves.begin() + solvetodelete);
+			std::cout << "Deleted solve " << solvetodelete + 1;
+			std::this_thread::sleep_for(std::chrono::seconds(1));
+			screen_f(0);
+		}
+		else {
+			std::cout << "Solve number does not exist";
+			std::this_thread::sleep_for(std::chrono::seconds(1));
+			screen_f(0);
+		}
+	}
+	else if (solves.size() > 1) {
 		solves.erase(solves.end() - 2);
-		std::cout << "Deleted solve";
+		std::cout << "Deleted last solve";
 		std::this_thread::sleep_for(std::chrono::seconds(1));
 		screen_f(0);
 	}
@@ -226,14 +273,35 @@ void deletesolve_f() {
 
 void plustwo_f() {
 	if (solves.size() > 1) {
-		solves[solves.size() - 2].time = solves[solves.size() - 2].time + 2.0;
-		std::cout << "Gave +2";
-		std::this_thread::sleep_for(std::chrono::seconds(1));
-		screen_f(0);
+		if (solves[solves.size() - 2].plustwo == false) {
+			solves[solves.size() - 2].time = solves[solves.size() - 2].time + 2.0;
+			solves[solves.size() - 2].plustwo = true;
+			std::cout << "Gave +2";
+			std::this_thread::sleep_for(std::chrono::seconds(1));
+			screen_f(0);
+		}
+		else {
+			solves[solves.size() - 2].time = solves[solves.size() - 2].time - 2.0;
+			solves[solves.size() - 2].plustwo = false;
+			std::cout << "Removed +2";
+			std::this_thread::sleep_for(std::chrono::seconds(1));
+			screen_f(0);
+		}
+	
 	}
 	else {
 		std::cout << "No solves to give a +2 to.";
 		std::this_thread::sleep_for(std::chrono::seconds(1));
 		screen_f(0);
 	}
+}
+
+void print_times_f() {
+	system("cls");
+	for (int i = 0; i < solves.size() - 1; i++) {
+		std::cout << "Solve " << i + 1 << ":	" << solves[i].time << "\n";
+	}
+	int ch;
+	ch = _getch();
+	screen_f(0);
 }

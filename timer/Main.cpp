@@ -18,6 +18,8 @@
 #define key_x 120
 #define backspace 8
 #define plustwo 112
+#define showsolves 97
+#define deletespecificsolve 224
 
 enum layers {
 	two = 0, three = 1, four = 2, five = 3
@@ -77,10 +79,16 @@ int main() {
 			screen_f(0);
 			break;
 		case backspace:
-			deletesolve_f();
+			deletesolve_f(false);
+			break;
+		case deletespecificsolve:
+			deletesolve_f(true);
 			break;
 		case plustwo:
 			plustwo_f();
+			break;
+		case showsolves:
+			print_times_f();
 		}
 	}
 	current_type = close;
