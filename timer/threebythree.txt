@@ -1,1 +1,0 @@
-1.461,U R' L D' R D' F L F' U' R' D' R B' D2 F2 U R2 L B F2 L' R' F' B' ,false

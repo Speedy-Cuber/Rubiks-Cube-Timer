@@ -7,6 +7,14 @@
 #include <conio.h>
 #include "function header.h"
 
+void recountbesttimes();
+void checkbest();
+
+double besttime;
+double bao5;
+double bao12;
+double bao100;
+
 struct solve {
 	double time;
 	std::string scramble;
@@ -137,6 +145,7 @@ void data_manager_f(int casenum, int layer_number, int layer_number_new) {
 			log("reserved solves");
 		}
 		solves.emplace_back(scramble_f(layer_number));
+		checkbest();
 		log("created new solve;");
 		break;
 		}
@@ -145,6 +154,7 @@ void data_manager_f(int casenum, int layer_number, int layer_number_new) {
 		solves.reserve(100);
 		solves.emplace_back(scramble_f(layer_number));
 		typeswtch_f(0);
+		recountbesttimes();
 		log("initiated new session;");
 		break;
 	case 2:
@@ -159,6 +169,7 @@ void data_manager_f(int casenum, int layer_number, int layer_number_new) {
 		log("created new solve");
 		sessionswtch_f(layer_number_new);
 		typeswtch_f(0);
+		recountbesttimes();
 		log("session switched;");
 		break;
 	case 3:
@@ -220,6 +231,33 @@ double get_average_f(unsigned int averagenumber) {
 	}
 }
 
+void checkbest() {
+	if (besttime == 0) {
+		besttime = solves[solves.size() - 2].time;
+	}
+	else if (solves[solves.size() - 2].time < besttime) {
+		besttime = solves[solves.size() - 2].time;
+	}
+	if (bao5 == 0) {
+		bao5 = get_average_f(5);
+	}
+	else if (get_average_f(5) < bao5) {
+		bao5 = get_average_f(5);
+	}
+	if (bao12 == 0) {
+		bao12 = get_average_f(12);
+	}
+	else if (get_average_f(12) < bao12) {
+		bao12 = get_average_f(12);
+	}
+	if (bao100 == 0) {
+		bao100 = get_average_f(100);
+	}
+	else if (get_average_f(100) < bao100) {
+		bao100 = get_average_f(100);
+	}
+}
+
 double get_average_total_f() {
 	if (solves.size() > 1) {
 		double total = 0;
@@ -250,25 +288,23 @@ void deletesolve_f(bool deletespecificsolve) {
 			solves.erase(solves.begin() + solvetodelete);
 			std::cout << "Deleted solve " << solvetodelete + 1;
 			std::this_thread::sleep_for(std::chrono::seconds(1));
-			screen_f(0);
 		}
 		else {
 			std::cout << "Solve number does not exist";
 			std::this_thread::sleep_for(std::chrono::seconds(1));
-			screen_f(0);
 		}
 	}
 	else if (solves.size() > 1) {
 		solves.erase(solves.end() - 2);
 		std::cout << "Deleted last solve";
 		std::this_thread::sleep_for(std::chrono::seconds(1));
-		screen_f(0);
 	}
 	else {
 		std::cout << "No solves to delete.";
 		std::this_thread::sleep_for(std::chrono::seconds(1));
-		screen_f(0);
 	}
+	recountbesttimes();
+	screen_f(0);
 }
 
 void plustwo_f() {
@@ -278,22 +314,21 @@ void plustwo_f() {
 			solves[solves.size() - 2].plustwo = true;
 			std::cout << "Gave +2";
 			std::this_thread::sleep_for(std::chrono::seconds(1));
-			screen_f(0);
 		}
 		else {
 			solves[solves.size() - 2].time = solves[solves.size() - 2].time - 2.0;
 			solves[solves.size() - 2].plustwo = false;
 			std::cout << "Removed +2";
 			std::this_thread::sleep_for(std::chrono::seconds(1));
-			screen_f(0);
 		}
 	
 	}
 	else {
 		std::cout << "No solves to give a +2 to.";
 		std::this_thread::sleep_for(std::chrono::seconds(1));
-		screen_f(0);
 	}
+	recountbesttimes();
+	screen_f(0);
 }
 
 void print_times_f() {
@@ -304,4 +339,75 @@ void print_times_f() {
 	int ch;
 	ch = _getch();
 	screen_f(0);
+}
+
+double ao[100] = { 0 };
+
+double getbestworst(int ao_length, int i) {
+	double best_solve_in_average = ao[0];
+	double worst_solve_in_average = ao[0];
+	for (int j = 1; j < ao_length; j++) {
+		if (best_solve_in_average > ao[j]) {
+			best_solve_in_average = ao[j];
+		}
+		if (worst_solve_in_average < ao[j]) {
+			worst_solve_in_average = ao[j];
+		}
+	}
+	return (best_solve_in_average + worst_solve_in_average);
+}
+
+double getbestavg(int ao_length) {
+	double average = 0;
+	double bao = 0;
+	for (int i = 0; i < solves.size() - ao_length; i++) {
+		double total = 0;
+		for (int j = 0; j < ao_length; j++) {
+			ao[j] = solves[i + j].time;
+			total = total + ao[j];
+		}
+		total = total - getbestworst(ao_length, i);
+		double average = total / (ao_length - 2);
+		if (bao == 0) {
+			bao = average;
+		}
+		if (average < bao) {
+			bao = average;
+		}
+	}
+	return bao;
+}
+
+
+void recountbesttimes() {
+	besttime = 0;
+	bao5 = 0;
+	bao12 = 0;
+	bao100 = 0;
+	for (int i = 0; i < solves.size() - 1; i++) {
+		if (besttime == 0) {
+			besttime = solves[0].time;
+		}
+		if (solves[i].time < besttime) {
+			besttime = solves[i].time;
+		}
+	}
+	if (solves.size() - 1 > 4) {
+		bao5 = truncate_f(getbestavg(5));
+	}
+	if (solves.size() - 1 > 11) {
+		bao12 = truncate_f(getbestavg(12));
+	}
+	if (solves.size() - 1 > 99) {
+		bao100 = truncate_f(getbestavg(100));
+	}
+}
+
+void printinfotoscreen() {
+	std::cout << "Best time:	" << besttime << "\n";
+	std::cout << "avg:	" << get_average_total_f() <<"\n";
+	std::cout << "ao5:	" << get_average_f(5) << "		Best ao5:	"<< bao5 << "\n";
+	std::cout << "ao12:	" << get_average_f(12) << "		Best ao12:	"<< bao12 << "\n";
+	std::cout << "ao100:	" << get_average_f(100) << "		Best ao100:	"<< bao100 << "\n";
+
 }
