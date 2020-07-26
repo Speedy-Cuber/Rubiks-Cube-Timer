@@ -14,10 +14,7 @@ void defaultscreen() {
 	std::cout << get_scramble_f() << "\n";
 	std::cout << "                                                                                            "  << "\n";
 	std::cout << "Last solve:	"<<get_time() << "\n";
- 	std::cout << "avg:	" << get_average_total_f() << "\n";
-	std::cout << "ao5:	" << get_average_f(5) << "\n";
-	std::cout << "ao12:	" << get_average_f(12) << "\n";
-	std::cout << "ao100:	" << get_average_f(100) << "\n";
+	printinfotoscreen();
 	std::cout << "Total number of solves in session:	" << currentsessionsize_f() -1 << "\n";
 }
 
