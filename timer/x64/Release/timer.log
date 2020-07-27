@@ -1,14 +1,7 @@
-﻿  Main.cpp
-  Scrambler.cpp
-  Screen.cpp
-  Solve Storage.cpp
-C:\Users\anono\source\repos\Speedy-Cuber\timer\timer\Solve Storage.cpp(65,42): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data
-C:\Users\anono\source\repos\Speedy-Cuber\timer\timer\Solve Storage.cpp(193,30): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\anono\source\repos\Speedy-Cuber\timer\timer\Solve Storage.cpp(275,22): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-  Timer.cpp
+﻿  Scrambler.cpp
   Generating code
-  17 of 426 functions ( 4.0%) were compiled, the rest were copied from previous compilation.
-    5 functions were new in current compilation
-    8 functions had inline decision re-evaluated but remain unchanged
+  2 of 426 functions ( 0.5%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   timer.vcxproj -> C:\Users\anono\source\repos\Speedy-Cuber\timer\x64\Release\timer.exe
