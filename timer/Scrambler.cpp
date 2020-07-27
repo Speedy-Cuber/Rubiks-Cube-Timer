@@ -50,7 +50,7 @@ std::string twobytwo(){
 std::string scramble_f(int layer_number) {
 	int scramble_length_one = 0;
 	int scramble_length = 0;
-	std::string moves[36] = { "F ", "F' ", "F2 ", "Fw ", "Fw' ", "Fw2 ", "B ", "B' ", "B2 ", "Bw ", "Bw' ", "Bw2 ", "U ", "U' ", "U2 ", "Uw ", "Uw' ", "Uw2 ", "D ", "D' ", "D2 ", "Dw ", "Dw' ", "Dw2 ", "L ", "L' ", "L2 ", "Lw ", "Lw' ", "Lw2 ", "R ", "R' ", "R2 ", "Rw ", "Rw' ", "Rw2 " };
+	std::string moves[36] = { "F  ", "F' ", "F2 ", "Fw ", "Fw' ", "Fw2 ", "B  ", "B' ", "B2 ", "Bw ", "Bw' ", "Bw2 ", "U  ", "U' ", "U2 ", "Uw ", "Uw' ", "Uw2 ", "D  ", "D' ", "D2 ", "Dw ", "Dw' ", "Dw2 ", "L  ", "L' ", "L2 ", "Lw ", "Lw' ", "Lw2 ", "R  ", "R' ", "R2 ", "Rw ", "Rw' ", "Rw2 " };
 	int gen = 0;
 	if (layer_number == 0) {
 		return twobytwo();
@@ -108,8 +108,12 @@ std::string scramble_f(int layer_number) {
 			}
 		}
 	}
-	if (scramble_length != 0) {
-		scramble = scramble + "\n";
+	if (scramble_length == 50) {
+		scramble = scramble + "						 ";
+	}
+	else if (scramble_length == 60) {
+		scramble = scramble + "					";
+
 	}
 	int yarray[60] = { 0 };
 	while (i < scramble_length) {
