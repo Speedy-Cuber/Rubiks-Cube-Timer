@@ -15,6 +15,7 @@
 #define key_three 51
 #define key_four 52
 #define key_five 53
+#define key_OH 111
 #define key_x 120
 #define backspace 8
 #define plustwo 112
@@ -22,7 +23,7 @@
 #define deletespecificsolve 224
 
 enum layers {
-	two = 0, three = 1, four = 2, five = 3
+	two = 0, three = 1, four = 2, five = 3, OH = 4 
 };
 enum session_type {
 	new_scramble, first_time, new_session, close
@@ -73,6 +74,14 @@ int main() {
 		case key_five:
 			screen_f(key_five);
 			newsess = five;
+			current_type = new_session;
+			data_manager_f(current_type, session, newsess);
+			std::this_thread::sleep_for(std::chrono::seconds(1));
+			screen_f(0);
+			break;
+		case key_OH:
+			screen_f(key_OH);
+			newsess = OH;
 			current_type = new_session;
 			data_manager_f(current_type, session, newsess);
 			std::this_thread::sleep_for(std::chrono::seconds(1));

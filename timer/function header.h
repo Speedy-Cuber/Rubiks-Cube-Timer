@@ -17,3 +17,4 @@ void deletesolve_f(bool deletespecificsolve);
 void plustwo_f();
 void print_times_f();
 void printinfotoscreen();
+void secondstodisplay(double time);

@@ -36,17 +36,17 @@ struct solve {
 std::vector<solve> solves;
 
 int num_of_solves(int layer_number) {
-	int number[4] = { 0 };
+	int number[5] = { 0 };
 	int x = 0;
 	int i = 0;
 	std::ifstream read;
-	read.open("session_size.txt");
+	read.open("session_size.size");
 	if (!read.is_open()) {
 		read.close();
-		std::ofstream write("session_size.txt");
+		std::ofstream write("session_size.size");
 		write.close();
-		read.open("session_size.txt");
-		log("session_size.txt created");
+		read.open("session_size.size");
+		log("session_size.size created");
 	}
 	while (read >> x) {
 		number[i] = x;
@@ -58,14 +58,14 @@ int num_of_solves(int layer_number) {
 }
 
 void numsolveswrite(int layer_number) {
-	unsigned int number[4];
-	for (int i = 0; i < 4; i++) {
+	unsigned int number[5];
+	for (int i = 0; i < 5; i++) {
 		number[i] = num_of_solves(i);
 	}
 	number[layer_number] = std::size(solves);
 	std::ofstream write;
-	write.open("session_size.txt");
-	for (int i = 0; i < 4; i++) {
+	write.open("session_size.size");
+	for (int i = 0; i < 5; i++) {
 		write << number[i] << ' ';
 	}
 	write.close();
@@ -82,7 +82,7 @@ bool stringtobool(std::string in) {
 }
 
 void read(int layer_number) {
-	std::string filename[4] = { "twobytwo.txt", "threebythree.txt", "fourbyfour.txt", "fivebyfive.txt" };
+	std::string filename[5] = { "twobytwo.ses", "threebythree.ses", "fourbyfour.ses", "fivebyfive.ses", "3x3OH.ses" };
 	std::ifstream read;
 	read.open(filename[layer_number]);
 	if (!read.is_open()) {
@@ -122,7 +122,7 @@ std::string booltostring(bool in) {
 }
 
 void write(int layer_number) {
-	std::string filename[4] = { "twobytwo.txt", "threebythree.txt", "fourbyfour.txt", "fivebyfive.txt" };
+	std::string filename[5] = { "twobytwo.ses", "threebythree.ses", "fourbyfour.ses", "fivebyfive.ses", "3x3OH.ses" };
 	std::ofstream write;
 	write.open(filename[layer_number]);
 	for (unsigned int i = 0; i < std::size(solves); i++) {
@@ -178,6 +178,20 @@ void data_manager_f(int casenum, int layer_number, int layer_number_new) {
 		numsolveswrite(layer_number);
 		log("close complete");
 		break;
+	}
+}
+
+void secondstodisplay(double time) {
+	if (time > 60) {
+		int minutes = trunc(time / 60);
+		double seconds = fmod(time, 60);
+		std::cout << minutes << ':' << seconds;
+	}
+	else if (time < 60 && time != 0) {
+		std::cout << time;
+	}
+	else {
+		std::cout << "0.0";
 	}
 }
 
@@ -334,7 +348,10 @@ void plustwo_f() {
 void print_times_f() {
 	system("cls");
 	for (int i = 0; i < solves.size() - 1; i++) {
-		std::cout << "Solve " << i + 1 << ":	" << solves[i].time << "\n";
+		std::cout << "Solve " << i + 1 << ":	";
+		secondstodisplay(solves[i].time);
+		std::cout << "\n";
+		std::cout << "Scramble " << i + 1 << ":	" << "\n" << solves[i].scramble;
 	}
 	int ch;
 	ch = _getch();
@@ -404,10 +421,25 @@ void recountbesttimes() {
 }
 
 void printinfotoscreen() {
-	std::cout << "Best time:	" << besttime << "\n";
-	std::cout << "avg:	" << get_average_total_f() <<"\n";
-	std::cout << "ao5:	" << get_average_f(5) << "		Best ao5:	"<< bao5 << "\n";
-	std::cout << "ao12:	" << get_average_f(12) << "		Best ao12:	"<< bao12 << "\n";
-	std::cout << "ao100:	" << get_average_f(100) << "		Best ao100:	"<< bao100 << "\n";
-
+	std::cout << "Best time:	";
+	secondstodisplay(besttime);
+	std::cout << "\n";
+	std::cout << "avg:	";
+	secondstodisplay(get_average_total_f());
+	std::cout <<"\n";
+	std::cout << "ao5:	";
+	secondstodisplay(get_average_f(5));
+	std::cout << "		Best ao5:	";
+	secondstodisplay(bao5);
+	std::cout << "\n";
+	std::cout << "ao12:	"; 
+	secondstodisplay(get_average_f(12));
+	std::cout << "		Best ao12:	";
+	secondstodisplay(bao12);
+	std::cout << "\n";
+	std::cout << "ao100:	";
+	secondstodisplay(get_average_f(100));
+	std::cout << "		Best ao100:	";
+	secondstodisplay(bao100);
+	std::cout << "\n";
 }

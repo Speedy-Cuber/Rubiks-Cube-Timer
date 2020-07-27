@@ -55,7 +55,7 @@ std::string scramble_f(int layer_number) {
 	if (layer_number == 0) {
 		return twobytwo();
 	}
-	else if (layer_number == 1) {
+	else if (layer_number == 1||layer_number == 4) {
 		gen = 6;
 		scramble_length_one = 25;
 		scramble_length = 0;
