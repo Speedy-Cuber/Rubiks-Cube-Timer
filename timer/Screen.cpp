@@ -13,7 +13,9 @@ void defaultscreen() {
 	system("cls");
 	std::cout << get_scramble_f() << "\n";
 	std::cout << "                                                                                            "  << "\n";
-	std::cout << "Last solve:	"<<get_time() << "\n";
+	std::cout << "Last solve:	";
+	secondstodisplay(get_time());
+	std::cout << "\n";
 	printinfotoscreen();
 	std::cout << "Total number of solves in session:	" << currentsessionsize_f() -1 << "\n";
 }

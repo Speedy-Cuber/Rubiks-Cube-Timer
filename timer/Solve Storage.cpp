@@ -181,6 +181,20 @@ void data_manager_f(int casenum, int layer_number, int layer_number_new) {
 	}
 }
 
+void secondstodisplay(double time) {
+	if (time > 60) {
+		int minutes = trunc(time / 60);
+		double seconds = fmod(time, 60);
+		std::cout << minutes << ':' << seconds;
+	}
+	else if (time < 60 && time != 0) {
+		std::cout << time;
+	}
+	else {
+		std::cout << "0.0";
+	}
+}
+
 std::string get_scramble_f() {
 	return solves[solves.size() - 1].scramble;
 }
@@ -334,7 +348,10 @@ void plustwo_f() {
 void print_times_f() {
 	system("cls");
 	for (int i = 0; i < solves.size() - 1; i++) {
-		std::cout << "Solve " << i + 1 << ":	" << solves[i].time << "\n";
+		std::cout << "Solve " << i + 1 << ":	";
+		secondstodisplay(solves[i].time);
+		std::cout << "\n";
+		std::cout << "Scramble " << i + 1 << ":	" << "\n" << solves[i].scramble;
 	}
 	int ch;
 	ch = _getch();
@@ -404,10 +421,25 @@ void recountbesttimes() {
 }
 
 void printinfotoscreen() {
-	std::cout << "Best time:	" << besttime << "\n";
-	std::cout << "avg:	" << get_average_total_f() <<"\n";
-	std::cout << "ao5:	" << get_average_f(5) << "		Best ao5:	"<< bao5 << "\n";
-	std::cout << "ao12:	" << get_average_f(12) << "		Best ao12:	"<< bao12 << "\n";
-	std::cout << "ao100:	" << get_average_f(100) << "		Best ao100:	"<< bao100 << "\n";
-
+	std::cout << "Best time:	";
+	secondstodisplay(besttime);
+	std::cout << "\n";
+	std::cout << "avg:	";
+	secondstodisplay(get_average_total_f());
+	std::cout <<"\n";
+	std::cout << "ao5:	";
+	secondstodisplay(get_average_f(5));
+	std::cout << "		Best ao5:	";
+	secondstodisplay(bao5);
+	std::cout << "\n";
+	std::cout << "ao12:	"; 
+	secondstodisplay(get_average_f(12));
+	std::cout << "		Best ao12:	";
+	secondstodisplay(bao12);
+	std::cout << "\n";
+	std::cout << "ao100:	";
+	secondstodisplay(get_average_f(100));
+	std::cout << "		Best ao100:	";
+	secondstodisplay(bao100);
+	std::cout << "\n";
 }
