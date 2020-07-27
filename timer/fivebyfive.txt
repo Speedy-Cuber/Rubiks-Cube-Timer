@@ -1,0 +1,2 @@
+0.325,L R' B U' R U B2 U' B L F R D2 B R2 L2 F' D' L D2 B2 U2 L2 R B F D' B F2 R 
+Lw' U Lw Dw' Fw2 U2 Dw2 Lw2 Dw Lw F U2 Fw' Bw' D Fw Lw2 D B2 Bw' Rw Lw Dw' Fw2 D' L R2 Dw2 Bw' U2 ,false

@@ -116,7 +116,7 @@ std::string scramble_f(int layer_number) {
 		x = rannum_f(6);
 		y = rannum_f(6);
 		if (xarray[i - 1] != x) {
-			if (xarray[i - 2] == x) {
+			if (xarray[i - 2] == x || scramble_length == 50) {
 				if ((x + xarray[i - 1]) != 1 && (x + xarray[i - 1]) != 5 && (x + xarray[i - 1]) != 9) {
 					xarray[i] = x;
 					yarray[i] = y;
@@ -131,7 +131,7 @@ std::string scramble_f(int layer_number) {
 			}
 		}
 		else if ((yarray[i - 1] > 3 && y < 4) || (yarray[i - 1] < 4 && y > 3)) {
-			if (xarray[i - 2] == x) {
+			if (xarray[i - 2] == x || scramble_length ==50) {
 				if ((x + xarray[i - 1]) != 1 && (x + xarray[i - 1]) != 5 && (x + xarray[i - 1]) != 9) {
 					xarray[i] = x;
 					yarray[i] = y;
