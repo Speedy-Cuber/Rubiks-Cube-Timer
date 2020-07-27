@@ -46,28 +46,36 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\Debug\2x2.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="..\Debug\3x3.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="..\Debug\4x4.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="..\Debug\5x5.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="..\Debug\session_size.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="..\Debug\log.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-  </ItemGroup>
-  <ItemGroup>
     <ResourceCompile Include="timer.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="3x3 OH.ses">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="fivebyfive.ses">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="fourbyfour.ses">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="threebythree.ses">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="timer.aps">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="twobytwo.ses">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="session_size.size">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="log.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

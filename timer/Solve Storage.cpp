@@ -36,17 +36,17 @@ struct solve {
 std::vector<solve> solves;
 
 int num_of_solves(int layer_number) {
-	int number[4] = { 0 };
+	int number[5] = { 0 };
 	int x = 0;
 	int i = 0;
 	std::ifstream read;
-	read.open("session_size.txt");
+	read.open("session_size.size");
 	if (!read.is_open()) {
 		read.close();
-		std::ofstream write("session_size.txt");
+		std::ofstream write("session_size.size");
 		write.close();
-		read.open("session_size.txt");
-		log("session_size.txt created");
+		read.open("session_size.size");
+		log("session_size.size created");
 	}
 	while (read >> x) {
 		number[i] = x;
@@ -58,14 +58,14 @@ int num_of_solves(int layer_number) {
 }
 
 void numsolveswrite(int layer_number) {
-	unsigned int number[4];
-	for (int i = 0; i < 4; i++) {
+	unsigned int number[5];
+	for (int i = 0; i < 5; i++) {
 		number[i] = num_of_solves(i);
 	}
 	number[layer_number] = std::size(solves);
 	std::ofstream write;
-	write.open("session_size.txt");
-	for (int i = 0; i < 4; i++) {
+	write.open("session_size.size");
+	for (int i = 0; i < 5; i++) {
 		write << number[i] << ' ';
 	}
 	write.close();
@@ -82,7 +82,7 @@ bool stringtobool(std::string in) {
 }
 
 void read(int layer_number) {
-	std::string filename[4] = { "twobytwo.txt", "threebythree.txt", "fourbyfour.txt", "fivebyfive.txt" };
+	std::string filename[5] = { "twobytwo.ses", "threebythree.ses", "fourbyfour.ses", "fivebyfive.ses", "3x3OH.ses" };
 	std::ifstream read;
 	read.open(filename[layer_number]);
 	if (!read.is_open()) {
@@ -122,7 +122,7 @@ std::string booltostring(bool in) {
 }
 
 void write(int layer_number) {
-	std::string filename[4] = { "twobytwo.txt", "threebythree.txt", "fourbyfour.txt", "fivebyfive.txt" };
+	std::string filename[5] = { "twobytwo.ses", "threebythree.ses", "fourbyfour.ses", "fivebyfive.ses", "3x3OH.ses" };
 	std::ofstream write;
 	write.open(filename[layer_number]);
 	for (unsigned int i = 0; i < std::size(solves); i++) {

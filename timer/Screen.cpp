@@ -8,6 +8,7 @@
 #define key_three 51
 #define key_four 52
 #define key_five 53
+#define key_OH 111
 
 void defaultscreen() {
 	system("cls");
@@ -37,6 +38,10 @@ void screen_f(int keypressed) {
 	case key_five:
 		system("cls");
 		std::cout << "switched to 5x5 session";
+		break;
+	case key_OH:
+		system("cls");
+		std::cout << "switched to OH session";
 		break;
 	case 0:
 		defaultscreen();

@@ -152,15 +152,19 @@
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\Debug\2x2.txt" />
-    <Text Include="..\Debug\3x3.txt" />
-    <Text Include="..\Debug\4x4.txt" />
-    <Text Include="..\Debug\5x5.txt" />
-    <Text Include="..\Debug\log.txt" />
-    <Text Include="..\Debug\session_size.txt" />
+    <ResourceCompile Include="timer.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="timer.rc" />
+    <None Include="3x3 OH.ses" />
+    <None Include="fivebyfive.ses" />
+    <None Include="fourbyfour.ses" />
+    <None Include="session_size.size" />
+    <None Include="threebythree.ses" />
+    <None Include="timer.aps" />
+    <None Include="twobytwo.ses" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="log.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
