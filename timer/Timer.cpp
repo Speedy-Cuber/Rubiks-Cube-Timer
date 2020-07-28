@@ -27,7 +27,7 @@ void timerout() {
 		end = std::chrono::high_resolution_clock::now();
 		duration = end - start;
 		secondstodisplay(truncate_f(duration.count()));
-		std::this_thread::sleep_for(std::chrono::milliseconds(50));
+		std::this_thread::sleep_for(std::chrono::milliseconds(80));
 	}
 	isoff = false;
 }
