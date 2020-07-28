@@ -52,7 +52,7 @@ int main() {
 			newsess = two;
 			current_type = new_session;
 			data_manager_f(current_type, session, newsess);
-			std::this_thread::sleep_for(std::chrono::seconds(1));
+			std::this_thread::sleep_for(std::chrono::milliseconds(20));
 			screen_f(0);
 			break;
 		case key_three:
@@ -60,7 +60,7 @@ int main() {
 			newsess = three;
 			current_type = new_session;
 			data_manager_f(current_type, session, newsess);
-			std::this_thread::sleep_for(std::chrono::seconds(1));
+			std::this_thread::sleep_for(std::chrono::milliseconds(20));
 			screen_f(0);
 			break;
 		case key_four:
@@ -68,7 +68,7 @@ int main() {
 			newsess = four;
 			current_type = new_session;
 			data_manager_f(current_type, session, newsess);
-			std::this_thread::sleep_for(std::chrono::seconds(1));
+			std::this_thread::sleep_for(std::chrono::milliseconds(20));
 			screen_f(0);
  			break;
 		case key_five:
@@ -76,7 +76,7 @@ int main() {
 			newsess = five;
 			current_type = new_session;
 			data_manager_f(current_type, session, newsess);
-			std::this_thread::sleep_for(std::chrono::seconds(1));
+			std::this_thread::sleep_for(std::chrono::milliseconds(20));
 			screen_f(0);
 			break;
 		case key_OH:
@@ -84,7 +84,7 @@ int main() {
 			newsess = OH;
 			current_type = new_session;
 			data_manager_f(current_type, session, newsess);
-			std::this_thread::sleep_for(std::chrono::seconds(1));
+			std::this_thread::sleep_for(std::chrono::milliseconds(20));
 			screen_f(0);
 			break;
 		case backspace:
