@@ -5189,3 +5189,178 @@ created new solve
 switched session
 switched current_type
 session switched;
+session_size read
+session file read
+scramble added
+switched current_type
+initiated new session;
+wrote to session
+session_size read
+session_size read
+session_size read
+session_size read
+session_size read
+wrote to session_size
+session_size read
+session_size read
+session file read
+scramble added
+created new solve
+switched session
+switched current_type
+session switched;
+wrote to session
+session_size read
+session_size read
+session_size read
+session_size read
+session_size read
+wrote to session_size
+session_size read
+session_size read
+session file read
+scramble added
+created new solve
+switched session
+switched current_type
+session switched;
+wrote to session
+session_size read
+session_size read
+session_size read
+session_size read
+session_size read
+wrote to session_size
+session_size read
+session_size read
+session file read
+scramble added
+created new solve
+switched session
+switched current_type
+session switched;
+wrote to session
+session_size read
+session_size read
+session_size read
+session_size read
+session_size read
+wrote to session_size
+session_size read
+session_size read
+session file read
+scramble added
+created new solve
+switched session
+switched current_type
+session switched;
+wrote to session
+session_size read
+session_size read
+session_size read
+session_size read
+session_size read
+wrote to session_size
+session_size read
+session_size read
+session file read
+scramble added
+created new solve
+switched session
+switched current_type
+session switched;
+wrote to session
+session_size read
+session_size read
+session_size read
+session_size read
+session_size read
+wrote to session_size
+session_size read
+session_size read
+session file read
+scramble added
+created new solve
+switched session
+switched current_type
+session switched;
+session_size read
+session file read
+scramble added
+switched current_type
+initiated new session;
+wrote to session
+session_size read
+session_size read
+session_size read
+session_size read
+session_size read
+wrote to session_size
+session_size read
+session_size read
+session file read
+scramble added
+created new solve
+switched session
+switched current_type
+session switched;
+wrote to session
+session_size read
+session_size read
+session_size read
+session_size read
+session_size read
+wrote to session_size
+session_size read
+session_size read
+session file read
+scramble added
+created new solve
+switched session
+switched current_type
+session switched;
+wrote to session
+session_size read
+session_size read
+session_size read
+session_size read
+session_size read
+wrote to session_size
+session_size read
+session_size read
+session file read
+scramble added
+created new solve
+switched session
+switched current_type
+session switched;
+wrote to session
+session_size read
+session_size read
+session_size read
+session_size read
+session_size read
+wrote to session_size
+session_size read
+session_size read
+session file read
+scramble added
+created new solve
+switched session
+switched current_type
+session switched;
+wrote to session
+session_size read
+session_size read
+session_size read
+session_size read
+session_size read
+wrote to session_size
+session_size read
+session_size read
+session file read
+scramble added
+created new solve
+switched session
+switched current_type
+session switched;
