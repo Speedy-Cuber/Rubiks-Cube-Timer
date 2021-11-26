@@ -3,12 +3,13 @@
 #include <ctime>
 #include <vector>
 #include <chrono>
-#include <conio.h>
+// #include <conio.h>
+#include "getch.hpp"
 #include <stdio.h>
 #include <thread>
-#include <Windows.h>
-#include "function header.h"
-#include "debug timer class.h"
+// #include <Windows.h>
+#include "function_header.h"
+#include "debug_timer_class.h"
 
 #define space 32
 #define key_two 50

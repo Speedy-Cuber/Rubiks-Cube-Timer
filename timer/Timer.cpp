@@ -1,8 +1,8 @@
 #include <iostream>
 #include <cmath>
 #include <chrono>
-#include "function header.h"
-#include <conio.h>
+#include "function_header.h"
+#include "getch.hpp"
 #include <stdio.h>
 #include <thread>
 
@@ -23,7 +23,7 @@ void timerout() {
 	start = std::chrono::high_resolution_clock::now();
 	std::chrono::duration<double, std::ratio<1, 1>> duration;
 	while (!isoff) {
-		system("cls");
+		system("clear");
 		end = std::chrono::high_resolution_clock::now();
 		duration = end - start;
 		secondstodisplay(truncate_f(duration.count()));

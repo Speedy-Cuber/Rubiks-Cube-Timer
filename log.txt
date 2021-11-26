@@ -1,0 +1,12 @@
+Created session
+session_size.size created
+session_size read
+session file read
+scramble added
+switched current_type
+initiated new session;
+session_size read
+session file read
+scramble added
+switched current_type
+initiated new session;

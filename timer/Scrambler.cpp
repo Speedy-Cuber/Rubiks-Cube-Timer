@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <ctime>
-#include "function header.h"
+#include "function_header.h"
 
 int rannum_f(int maxnum) {
 	return (rand() % maxnum);

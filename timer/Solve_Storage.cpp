@@ -4,8 +4,9 @@
 #include <fstream>
 #include <sstream>
 #include <thread>
-#include <conio.h>
-#include "function header.h"
+#include <math.h>
+#include "getch.hpp"
+#include "function_header.h"
 
 void recountbesttimes();
 void checkbest();
