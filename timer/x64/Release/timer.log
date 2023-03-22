@@ -1,11 +1,15 @@
-﻿  Solve Storage.cpp
+﻿  Main.cpp
+C:\DEV\Speedy-Cuber\Rubiks-Cube-Timer\timer\Main.cpp(36,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Scrambler.cpp
+  Screen.cpp
+  Solve Storage.cpp
 C:\DEV\Speedy-Cuber\Rubiks-Cube-Timer\timer\Solve Storage.cpp(65,42): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data
-C:\DEV\Speedy-Cuber\Rubiks-Cube-Timer\timer\Solve Storage.cpp(186,15): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\DEV\Speedy-Cuber\Rubiks-Cube-Timer\timer\Solve Storage.cpp(207,30): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\DEV\Speedy-Cuber\Rubiks-Cube-Timer\timer\Solve Storage.cpp(289,22): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\DEV\Speedy-Cuber\Rubiks-Cube-Timer\timer\Solve Storage.cpp(200,15): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\DEV\Speedy-Cuber\Rubiks-Cube-Timer\timer\Solve Storage.cpp(221,30): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\DEV\Speedy-Cuber\Rubiks-Cube-Timer\timer\Solve Storage.cpp(303,22): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  Timer.cpp
   Generating code
-  5 of 437 functions ( 1.1%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    10 functions had inline decision re-evaluated but remain unchanged
+  Previous IPDB and IOBJ mismatch, fall back to full compilation.
+  All 437 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Finished generating code
   timer.vcxproj -> C:\DEV\Speedy-Cuber\Rubiks-Cube-Timer\x64\Release\timer.exe

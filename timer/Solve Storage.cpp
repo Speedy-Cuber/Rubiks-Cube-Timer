@@ -121,6 +121,7 @@ std::string booltostring(bool in) {
 	}
 }
 
+//Record a solves in a session. Add ability to add different sessions, use vector to store session names in the session_size.size file, maybe change to Session.info
 void write(int layer_number) {
 	std::string filename[5] = { "twobytwo.ses", "threebythree.ses", "fourbyfour.ses", "fivebyfive.ses", "3x3OH.ses" };
 	std::ofstream write;
@@ -133,6 +134,18 @@ void write(int layer_number) {
 	write.close();
 	log("wrote to session");
 }
+
+//instead of switch and case statement, make functions that do the individual parts of the entire data_manager_f() function and call those individually in the main function.
+
+void InitializeSession() {
+
+}
+
+void CloseSession() {
+
+}
+
+
 
 void data_manager_f(int casenum, int layer_number, int layer_number_new) {
 	switch (casenum) {
@@ -181,6 +194,7 @@ void data_manager_f(int casenum, int layer_number, int layer_number_new) {
 	}
 }
 
+//This function takes a time in seconds and displays it nicely in minutes and seconds.
 void secondstodisplay(double time) {
 	if (time > 60) {
 		int minutes = trunc(time / 60);
@@ -195,7 +209,7 @@ void secondstodisplay(double time) {
 	}
 }
 
-std::string get_scramble_f() {
+std::string GetScramble() {
 	return solves[solves.size() - 1].scramble;
 }
 
@@ -203,7 +217,7 @@ void set_time_f(double time) {
 	solves[solves.size() - 1].time = time;
 }
 
-double get_time() {
+double GetTime() {
 	int size = solves.size() - 1;
 	if (size != 0) {
 		return solves[solves.size() - 2].time;
@@ -285,7 +299,7 @@ double get_average_total_f() {
 	}
 }
 
-int currentsessionsize_f() {
+int CurrentSessionSize() {
 	return solves.size();
 }
 
@@ -318,7 +332,7 @@ void deletesolve_f(bool deletespecificsolve) {
 		std::this_thread::sleep_for(std::chrono::seconds(1));
 	}
 	RecountBestTimes();
-	screen_f(0);
+	Screen(0);
 }
 
 void plustwo_f() {
@@ -342,7 +356,7 @@ void plustwo_f() {
 		std::this_thread::sleep_for(std::chrono::seconds(1));
 	}
 	RecountBestTimes();
-	screen_f(0);
+	Screen(0);
 }
 
 void print_times_f() {
@@ -355,7 +369,7 @@ void print_times_f() {
 	}
 	int ch;
 	ch = _getch();
-	screen_f(0);
+	Screen(0);
 }
 
 double ao[100] = { 0 };

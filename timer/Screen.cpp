@@ -10,18 +10,18 @@
 #define key_five 53
 #define key_OH 111
 
-void defaultscreen() {
+void DefaultScreen() {
 	system("cls");
-	std::cout << get_scramble_f() << "\n";
+	std::cout << GetScramble() << "\n";
 	std::cout << "                                                                                            "  << "\n";
 	std::cout << "Last solve:	";
-	secondstodisplay(get_time());
+	secondstodisplay(GetTime());
 	std::cout << "\n";
 	printinfotoscreen();
-	std::cout << "Total number of solves in session:	" << currentsessionsize_f() -1 << "\n";
+	std::cout << "Total number of solves in session:	" << CurrentSessionSize() -1 << "\n";
 }
 
-void screen_f(int keypressed) {
+void Screen(int keypressed) {
 	switch (keypressed) {
 	case key_two:
 		system("cls");
@@ -44,7 +44,7 @@ void screen_f(int keypressed) {
 		std::cout << "switched to OH session";
 		break;
 	case 0:
-		defaultscreen();
+		DefaultScreen();
 		break;
 	}
 }

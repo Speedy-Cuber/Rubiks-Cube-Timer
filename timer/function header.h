@@ -1,18 +1,18 @@
 #pragma once
 std::string scramble_f(int& layer_number);
 void data_manager_f(int casenum, int layer_number, int layer_number_new);
-std::string get_scramble_f();
+std::string GetScramble();
 void set_time_f(double time);
-double get_time();
+double GetTime();
 void timer_f(int layer_number);	
 void log(std::string log);
 void typeswtch_f(int swtch);
 void sessionswtch_f(int swtch);
-void screen_f(int keypressed);
+void Screen(int keypressed);
 double RoundMil_f(double& time);
 double get_average_total_f();
 double get_average_f(double averagenumber);
-int currentsessionsize_f();
+int CurrentSessionSize();
 void deletesolve_f(bool deletespecificsolve);
 void plustwo_f();
 void print_times_f();
