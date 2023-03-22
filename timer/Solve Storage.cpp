@@ -213,32 +213,31 @@ double get_time() {
 	}
 }
 
-double get_average_f(unsigned int averagenumber) {
+double get_average_f(double averagenumber) {
 	if (solves.size() > averagenumber) {
 		double total = 0;
 		double timearray[100] = { 0 };
-		for (unsigned int i = 0; i < (averagenumber); i++) {
+		for (int i = 0; i < (averagenumber); i++) {
 			timearray[i] = solves[solves.size() - 2 - i].time;
 		}
 		double worsttime = timearray[0];
-		for (unsigned int i = 0; i < averagenumber; i++) {
+		for (int i = 0; i < averagenumber; i++) {
 			if (timearray[i] > worsttime) {
 				worsttime = timearray[i];
 			}
 		}
 		double besttime = timearray[0];
-		for (unsigned int i = 0; i < averagenumber; i++) {
+		for (int i = 0; i < averagenumber; i++) {
 			if (timearray[i] < besttime) {
 				besttime = timearray[i];
 			}
 		}
-		for (unsigned int i = 0; i < averagenumber; i++) {
+		for (int i = 0; i < averagenumber; i++) {
 			total = total + timearray[i];
 		}
-		total = total - worsttime;
-		total = total - besttime;
-		int divisor = averagenumber - 2;
-		return truncate_f(total / divisor);
+		total = total - worsttime - besttime;
+		double average = total / (averagenumber - 2);
+		return RoundMil_f(average);
 	}
 	else {
 		return 0;
@@ -275,10 +274,11 @@ void checkbest() {
 double get_average_total_f() {
 	if (solves.size() > 1) {
 		double total = 0;
-		for (unsigned int i = 0; i < (solves.size() - 1); i++) {
+		for (int i = 0; i < (solves.size() - 1); i++) {
 			total = total + solves[i].time;
 		}
-		return truncate_f(total / (solves.size() - 1));
+		total = total / (solves.size() - 1);
+		return RoundMil_f(total);
 	}
 	else {
 		return 0;
@@ -348,10 +348,10 @@ void plustwo_f() {
 void print_times_f() {
 	system("cls");
 	for (int i = 0; i < solves.size() - 1; i++) {
-		std::cout << "Solve " << i + 1 << ":	";
+		std::cout << "Solve " << i + 1 << " time:	";
 		secondstodisplay(solves[i].time);
 		std::cout << "\n";
-		std::cout << "Scramble " << i + 1 << ":	" << "\n" << solves[i].scramble;
+		std::cout << "Scramble " << i + 1 << ":	" << "\n" << solves[i].scramble << "\n\n";
 	}
 	int ch;
 	ch = _getch();
@@ -392,7 +392,7 @@ double getbestavg(int ao_length) {
 			bao = average;
 		}
 	}
-	return bao;
+	return RoundMil_f(bao);
 }
 
 
@@ -410,13 +410,13 @@ void recountbesttimes() {
 		}
 	}
 	if (solves.size() - 1 > 4) {
-		bao5 = truncate_f(getbestavg(5));
+		bao5 = getbestavg(5);
 	}
 	if (solves.size() - 1 > 11) {
-		bao12 = truncate_f(getbestavg(12));
+		bao12 = getbestavg(12);
 	}
 	if (solves.size() - 1 > 99) {
-		bao100 = truncate_f(getbestavg(100));
+		bao100 = getbestavg(10);
 	}
 }
 

@@ -47,7 +47,7 @@ std::string twobytwo(){
 	return scramble;
 }
 
-std::string scramble_f(int layer_number) {
+std::string scramble_f(int& layer_number) {
 	int scramble_length_one = 0;
 	int scramble_length = 0;
 	std::string moves[36] = { "F  ", "F' ", "F2 ", "Fw ", "Fw' ", "Fw2 ", "B  ", "B' ", "B2 ", "Bw ", "Bw' ", "Bw2 ", "U  ", "U' ", "U2 ", "Uw ", "Uw' ", "Uw2 ", "D  ", "D' ", "D2 ", "Dw ", "Dw' ", "Dw2 ", "L  ", "L' ", "L2 ", "Lw ", "Lw' ", "Lw2 ", "R  ", "R' ", "R2 ", "Rw ", "Rw' ", "Rw2 " };
