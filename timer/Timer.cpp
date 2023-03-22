@@ -15,24 +15,26 @@ double RoundMil_f(double& time) {	//Round numbers to the nearest thousandth
 	return time;
 }
 
-static bool isoff = false;
+static bool On = true;
 
+//display seconds elapsed on screen
 void timerout() {
-	double onscreentime = 0;
+	double OnScreenTime = 0;
 	std::chrono::time_point<std::chrono::steady_clock> start, end;
 	start = std::chrono::high_resolution_clock::now();
 	std::chrono::duration<double, std::ratio<1, 1>> duration;
-	while (!isoff) {
+	while (On) {
 		system("cls");
 		end = std::chrono::high_resolution_clock::now();
 		duration = end - start;
-		double time = duration.count();
-		secondstodisplay(RoundMil_f(time));
+		OnScreenTime = duration.count();
+		secondstodisplay(RoundMil_f(OnScreenTime));
 		std::this_thread::sleep_for(std::chrono::milliseconds(80));
 	}
-	isoff = false;
+	On = true;
 }
 
+//Record the official time of the solve
 void timer_f(int layer_number) {
 	double time = 0;
 	std::chrono::time_point<std::chrono::steady_clock> start, end;
@@ -42,7 +44,7 @@ void timer_f(int layer_number) {
 	std::thread ostimer(timerout);
 	ch = _getch();
 	end = std::chrono::high_resolution_clock::now();
-	isoff = true;
+	On = false;
 	ostimer.join();
 	duration = end - start;
 	time = duration.count();

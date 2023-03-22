@@ -7,7 +7,7 @@
 #include <conio.h>
 #include "function header.h"
 
-void recountbesttimes();
+void RecountBestTimes();
 void checkbest();
 
 double besttime;
@@ -154,7 +154,7 @@ void data_manager_f(int casenum, int layer_number, int layer_number_new) {
 		solves.reserve(100);
 		solves.emplace_back(scramble_f(layer_number));
 		typeswtch_f(0);
-		recountbesttimes();
+		RecountBestTimes();
 		log("initiated new session;");
 		break;
 	case 2:
@@ -169,7 +169,7 @@ void data_manager_f(int casenum, int layer_number, int layer_number_new) {
 		log("created new solve");
 		sessionswtch_f(layer_number_new);
 		typeswtch_f(0);
-		recountbesttimes();
+		RecountBestTimes();
 		log("session switched;");
 		break;
 	case 3:
@@ -317,7 +317,7 @@ void deletesolve_f(bool deletespecificsolve) {
 		std::cout << "No solves to delete.";
 		std::this_thread::sleep_for(std::chrono::seconds(1));
 	}
-	recountbesttimes();
+	RecountBestTimes();
 	screen_f(0);
 }
 
@@ -341,7 +341,7 @@ void plustwo_f() {
 		std::cout << "No solves to give a +2 to.";
 		std::this_thread::sleep_for(std::chrono::seconds(1));
 	}
-	recountbesttimes();
+	RecountBestTimes();
 	screen_f(0);
 }
 
@@ -374,17 +374,21 @@ double getbestworst(int ao_length, int i) {
 	return (best_solve_in_average + worst_solve_in_average);
 }
 
-double getbestavg(int ao_length) {
+//iterate through instances of solve class to find best average. Called in function RecountBestTimes()
+double GetBestAvg(int AoLength) {
+	if (AoLength > solves.size()) {
+		return 0;
+	}
 	double average = 0;
 	double bao = 0;
-	for (int i = 0; i < solves.size() - ao_length; i++) {
+	for (int i = 0; i < solves.size() - AoLength; i++) {
 		double total = 0;
-		for (int j = 0; j < ao_length; j++) {
+		for (int j = 0; j < AoLength; j++) {
 			ao[j] = solves[i + j].time;
 			total = total + ao[j];
 		}
-		total = total - getbestworst(ao_length, i);
-		double average = total / (ao_length - 2);
+		total = total - getbestworst(AoLength, i);
+		double average = total / (AoLength - 2);
 		if (bao == 0) {
 			bao = average;
 		}
@@ -395,8 +399,8 @@ double getbestavg(int ao_length) {
 	return RoundMil_f(bao);
 }
 
-
-void recountbesttimes() {
+//iterate through instances of solve class and find best times and averages. Called when opening a new .sess file at aplication start or when switching sessions.
+void RecountBestTimes() {
 	besttime = 0;
 	bao5 = 0;
 	bao12 = 0;
@@ -409,15 +413,9 @@ void recountbesttimes() {
 			besttime = solves[i].time;
 		}
 	}
-	if (solves.size() - 1 > 4) {
-		bao5 = getbestavg(5);
-	}
-	if (solves.size() - 1 > 11) {
-		bao12 = getbestavg(12);
-	}
-	if (solves.size() - 1 > 99) {
-		bao100 = getbestavg(10);
-	}
+	bao5 = GetBestAvg(5);
+	bao12 = GetBestAvg(12);
+	bao100 = GetBestAvg(10);
 }
 
 void printinfotoscreen() {
