@@ -1,2 +1,6 @@
-﻿  Timer.cpp
-  timer.vcxproj -> C:\Users\anono\source\repos\Speedy-Cuber\timer\x64\Debug\timer.exe
+﻿  Solve Storage.cpp
+C:\DEV\Speedy-Cuber\Rubiks-Cube-Timer\timer\Solve Storage.cpp(65,42): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\DEV\Speedy-Cuber\Rubiks-Cube-Timer\timer\Solve Storage.cpp(186,15): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\DEV\Speedy-Cuber\Rubiks-Cube-Timer\timer\Solve Storage.cpp(207,30): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\DEV\Speedy-Cuber\Rubiks-Cube-Timer\timer\Solve Storage.cpp(289,22): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  timer.vcxproj -> C:\DEV\Speedy-Cuber\Rubiks-Cube-Timer\x64\Debug\timer.exe

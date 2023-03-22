@@ -8,9 +8,9 @@
 
 #define space 32
 
-double truncate_f(double time) {
+double RoundMil_f(double& time) {	//Round numbers to the nearest thousandth
 	time = time * 1000;
-	time = std::trunc(time);
+	time = std::round(time);
 	time = time / 1000;
 	return time;
 }
@@ -26,7 +26,8 @@ void timerout() {
 		system("cls");
 		end = std::chrono::high_resolution_clock::now();
 		duration = end - start;
-		secondstodisplay(truncate_f(duration.count()));
+		double time = duration.count();
+		secondstodisplay(RoundMil_f(time));
 		std::this_thread::sleep_for(std::chrono::milliseconds(80));
 	}
 	isoff = false;
@@ -44,6 +45,6 @@ void timer_f(int layer_number) {
 	isoff = true;
 	ostimer.join();
 	duration = end - start;
-	time = truncate_f(duration.count());
-	set_time_f(time);
+	time = duration.count();
+	set_time_f(RoundMil_f(time));
 }
