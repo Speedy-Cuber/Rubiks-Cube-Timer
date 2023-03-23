@@ -2,6 +2,7 @@
 #include <string>
 #include <chrono>
 #include "function header.h"
+#include <thread>
 
 #define space 32
 #define key_two 50
@@ -21,30 +22,8 @@ void DefaultScreen() {
 	std::cout << "Total number of solves in session:	" << CurrentSessionSize() -1 << "\n";
 }
 
-void Screen(int keypressed) {
-	switch (keypressed) {
-	case key_two:
-		system("cls");
-		std::cout << "switched to 2x2 session";
-		break;
-	case key_three:
-		system("cls");
-		std::cout << "switched to 3x3 session";
-		break;
-	case key_four:
-		system("cls");
-		std::cout << "switched to 4x4 session";
-		break;
-	case key_five:
-		system("cls");
-		std::cout << "switched to 5x5 session";
-		break;
-	case key_OH:
-		system("cls");
-		std::cout << "switched to OH session";
-		break;
-	case 0:
-		DefaultScreen();
-		break;
-	}
+void MessageScreen(std::string Message) {
+	system("cls");
+	std::cout << Message;
+	std::this_thread::sleep_for(std::chrono::milliseconds(500));
 }

@@ -11,13 +11,13 @@
 void RecountBestTimes();
 void CheckBest();
 
-double BestTime;
-double bao5;
-double bao12;
-double bao100;
+float BestTime;
+float bao5;
+float bao12;
+float bao100;
 
 struct solve {
-	double Time;
+	float Time;
 	std::string scramble;
 	bool plustwo;
 	solve(std::string in) {
@@ -26,7 +26,7 @@ struct solve {
 		plustwo = false;
 		log("scramble added");
 	}
-	solve(double in, std::string inw, bool inb) {
+	solve(float in, std::string inw, bool inb) {
 		Time = in;
 		scramble = inw;
 		plustwo = inb;
@@ -100,7 +100,7 @@ void read(int layer_number) {
 	std::string intime;
 	std::string plustwo;
 	bool plus_two = false;
-	double time;
+	float time;
 	while (std::getline(read, all)) {
 		std::stringstream ss(all);
 		std::getline(ss, intime, ',');
@@ -149,7 +149,7 @@ void CloseSession() {
 
 
 
-void data_manager_f(int casenum, int layer_number, int layer_number_new) {
+void DataManager(int casenum, int layer_number, int layer_number_new) {
 	switch (casenum) {
 	case 0:
 		{int size = solves.size() % 100;
@@ -159,7 +159,7 @@ void data_manager_f(int casenum, int layer_number, int layer_number_new) {
 			NumSolvesWrite(layer_number);
 			log("reserved solves");
 		}
-		solves.emplace_back(scramble_f(layer_number));
+		solves.emplace_back(Scrambler(layer_number));
 		CheckBest();
 		log("created new solve;");
 		break;
@@ -167,8 +167,8 @@ void data_manager_f(int casenum, int layer_number, int layer_number_new) {
 	case 1:
 		read(layer_number);
 		solves.reserve(100);
-		solves.emplace_back(scramble_f(layer_number));
-		typeswtch_f(0);
+		solves.emplace_back(Scrambler(layer_number));
+		TypeSwitch(0);
 		RecountBestTimes();
 		log("initiated new session;");
 		break;
@@ -180,10 +180,10 @@ void data_manager_f(int casenum, int layer_number, int layer_number_new) {
 		solves.reserve(ReadSessionInfo(layer_number));
 		read(layer_number_new);
 		solves.reserve(100);
-		solves.emplace_back(scramble_f(layer_number_new));
+		solves.emplace_back(Scrambler(layer_number_new));
 		log("created new solve");
-		sessionswtch_f(layer_number_new);
-		typeswtch_f(0);
+		SessionSwitch(layer_number_new);
+		TypeSwitch(0);
 		RecountBestTimes();
 		log("session switched;");
 		break;
@@ -197,10 +197,10 @@ void data_manager_f(int casenum, int layer_number, int layer_number_new) {
 }
 
 //This function takes a time in seconds and displays it nicely in minutes and seconds.
-void secondstodisplay(double time) {
+void secondstodisplay(float time) {
 	if (time > 60) {
 		int minutes = trunc(time / 60);
-		double seconds = fmod(time, 60);
+		float seconds = fmod(time, 60);
 		std::cout << minutes << ':' << seconds;
 	}
 	else if (time < 60 && time != 0) {
@@ -215,11 +215,11 @@ std::string GetScramble() {
 	return solves[solves.size() - 1].scramble;
 }
 
-void set_time_f(double time) {
+void SetTime(float time) {
 	solves[solves.size() - 1].Time = time;
 }
 
-double GetTime() {
+float GetTime() {
 	int size = solves.size() - 1;
 	if (size != 0) {
 		return solves[solves.size() - 2].Time;
@@ -229,30 +229,24 @@ double GetTime() {
 	}
 }
 
-double get_average_f(double averagenumber) {
+float GetAverage(float averagenumber) {
 	if (solves.size() > averagenumber) {
-		double total = 0;
-		double timearray[100] = { 0 };
+		float total = 0;
+		float timearray[100] = { 0 };
+		float worsttime = timearray[0];
+		float BestTime = std::numeric_limits<float>::max();
 		for (int i = 0; i < (averagenumber); i++) {
 			timearray[i] = solves[solves.size() - 2 - i].Time;
-		}
-		double worsttime = timearray[0];
-		for (int i = 0; i < averagenumber; i++) {
 			if (timearray[i] > worsttime) {
 				worsttime = timearray[i];
 			}
-		}
-		double BestTime = timearray[0];
-		for (int i = 0; i < averagenumber; i++) {
 			if (timearray[i] < BestTime) {
 				BestTime = timearray[i];
 			}
-		}
-		for (int i = 0; i < averagenumber; i++) {
 			total = total + timearray[i];
 		}
 		total = total - worsttime - BestTime;
-		double average = total / (averagenumber - 2);
+		float average = total / (averagenumber - 2);
 		return RoundMil_f(average);
 	}
 	else {
@@ -268,28 +262,28 @@ void CheckBest() {
 		BestTime = solves[solves.size() - 2].Time;
 	}
 	if (bao5 == 0) {
-		bao5 = get_average_f(5);
+		bao5 = GetAverage(5);
 	}
-	else if (get_average_f(5) < bao5) {
-		bao5 = get_average_f(5);
+	else if (GetAverage(5) < bao5) {
+		bao5 = GetAverage(5);
 	}
 	if (bao12 == 0) {
-		bao12 = get_average_f(12);
+		bao12 = GetAverage(12);
 	}
-	else if (get_average_f(12) < bao12) {
-		bao12 = get_average_f(12);
+	else if (GetAverage(12) < bao12) {
+		bao12 = GetAverage(12);
 	}
 	if (bao100 == 0) {
-		bao100 = get_average_f(100);
+		bao100 = GetAverage(100);
 	}
-	else if (get_average_f(100) < bao100) {
-		bao100 = get_average_f(100);
+	else if (GetAverage(100) < bao100) {
+		bao100 = GetAverage(100);
 	}
 }
 
-double get_average_total_f() {
+float GetTotalAverage() {
 	if (solves.size() > 1) {
-		double total = 0;
+		float total = 0;
 		for (int i = 0; i < (solves.size() - 1); i++) {
 			total = total + solves[i].Time;
 		}
@@ -334,7 +328,7 @@ void deletesolve_f(bool deletespecificsolve) {
 		std::this_thread::sleep_for(std::chrono::seconds(1));
 	}
 	RecountBestTimes();
-	Screen(0);
+	DefaultScreen();
 }
 
 void plustwo_f() {
@@ -358,7 +352,7 @@ void plustwo_f() {
 		std::this_thread::sleep_for(std::chrono::seconds(1));
 	}
 	RecountBestTimes();
-	Screen(0);
+	DefaultScreen();
 }
 
 void print_times_f() {
@@ -371,21 +365,21 @@ void print_times_f() {
 	}
 	int ch;
 	ch = _getch();
-	Screen(0);
+	DefaultScreen();
 }
 
 //iterate through instances of solve class to find best average. Called in function RecountBestTimes()
-double GetBestAvg(int AoLength) {
+float GetBestAvg(int AoLength) {
 	if (AoLength > solves.size()) {
 		return 0;
 	}
-	double ao[100] = { 0 };
-	double average = 0;
-	double bao = 0;
+	float ao[100] = { 0 };
+	float average = 0;
+	float bao = 0;
 	for (int i = 0; i < solves.size() - AoLength; i++) {
-		double total = 0;
-		double BestInAverage = std::numeric_limits<float>::max();;
-		double WorstInAverage = 0;
+		float total = 0;
+		float BestInAverage = std::numeric_limits<float>::max();
+		float WorstInAverage = 0;
 		for (int j = 0; j < AoLength; j++) {
 			ao[j] = solves[i + j].Time;
 			total = total + ao[j];
@@ -397,7 +391,7 @@ double GetBestAvg(int AoLength) {
 			}
 		}
 		total = total - (BestInAverage + WorstInAverage);
-		double average = total / (AoLength - 2);
+		float average = total / (AoLength - 2);
 		if (bao == 0) {
 			bao = average;
 		}
@@ -424,7 +418,7 @@ void RecountBestTimes() {
 	}
 	bao5 = GetBestAvg(5);
 	bao12 = GetBestAvg(12);
-	bao100 = GetBestAvg(10);
+	bao100 = GetBestAvg(100);
 }
 
 void printinfotoscreen() {
@@ -432,20 +426,20 @@ void printinfotoscreen() {
 	secondstodisplay(BestTime);
 	std::cout << "\n";
 	std::cout << "avg:	";
-	secondstodisplay(get_average_total_f());
+	secondstodisplay(GetTotalAverage());
 	std::cout <<"\n";
 	std::cout << "ao5:	";
-	secondstodisplay(get_average_f(5));
+	secondstodisplay(GetAverage(5));
 	std::cout << "		Best ao5:	";
 	secondstodisplay(bao5);
 	std::cout << "\n";
 	std::cout << "ao12:	"; 
-	secondstodisplay(get_average_f(12));
+	secondstodisplay(GetAverage(12));
 	std::cout << "		Best ao12:	";
 	secondstodisplay(bao12);
 	std::cout << "\n";
 	std::cout << "ao100:	";
-	secondstodisplay(get_average_f(100));
+	secondstodisplay(GetAverage(100));
 	std::cout << "		Best ao100:	";
 	secondstodisplay(bao100);
 	std::cout << "\n";

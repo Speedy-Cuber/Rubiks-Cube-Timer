@@ -35,57 +35,51 @@ int newsess = four;
 int main() {
 	srand(time(NULL));
 	int ch = 0;
-	data_manager_f(current_type, session, newsess);
-	Screen(0);
+	DataManager(current_type, session, newsess);
+	DefaultScreen();
 	while (ch != key_x) {
 		ch = _getch();
 		switch (ch) {
 		case space:
-			timer_f(session);
-			data_manager_f(current_type, session, newsess);
+			Timer(session);
+			DataManager(current_type, session, newsess);
 			log("time saved");
-			Screen(0);
-			std::this_thread::sleep_for(std::chrono::milliseconds(1500));
+			DefaultScreen();
 			break;
 		case key_two:
-			Screen(key_two);
+			MessageScreen("switched to 2x2 session");
 			newsess = two;
 			current_type = new_session;
-			data_manager_f(current_type, session, newsess);
-			std::this_thread::sleep_for(std::chrono::milliseconds(20));
-			Screen(0);
+			DataManager(current_type, session, newsess);
+			DefaultScreen();
 			break;
 		case key_three:
-			Screen(key_three);
+			MessageScreen("switched to 3x3 session");
 			newsess = three;
 			current_type = new_session;
-			data_manager_f(current_type, session, newsess);
-			std::this_thread::sleep_for(std::chrono::milliseconds(20));
-			Screen(0);
+			DataManager(current_type, session, newsess);
+			DefaultScreen();
 			break;
 		case key_four:
-			Screen(key_four);
+			MessageScreen("switched to 4x4 session");
 			newsess = four;
 			current_type = new_session;
-			data_manager_f(current_type, session, newsess);
-			std::this_thread::sleep_for(std::chrono::milliseconds(20));
-			Screen(0);
+			DataManager(current_type, session, newsess);
+			DefaultScreen();
  			break;
 		case key_five:
-			Screen(key_five);
+			MessageScreen("switched to 5x5 session");
 			newsess = five;
 			current_type = new_session;
-			data_manager_f(current_type, session, newsess);
-			std::this_thread::sleep_for(std::chrono::milliseconds(20));
-			Screen(0);
+			DataManager(current_type, session, newsess);
+			DefaultScreen();
 			break;
 		case key_OH:
-			Screen(key_OH);
+			MessageScreen("switched to OH session");
 			newsess = OH;
 			current_type = new_session;
-			data_manager_f(current_type, session, newsess);
-			std::this_thread::sleep_for(std::chrono::milliseconds(20));
-			Screen(0);
+			DataManager(current_type, session, newsess);
+			DefaultScreen();
 			break;
 		case backspace:
 			deletesolve_f(false);
@@ -101,15 +95,15 @@ int main() {
 		}
 	}
 	current_type = close;
-	data_manager_f(current_type, session, newsess);
+	DataManager(current_type, session, newsess);
 }
 
-void typeswtch_f(int swtch) {
+void TypeSwitch(int swtch) {
 	current_type = swtch;
 	log("switched current_type");
 }
 
-void sessionswtch_f(int swtch) {
+void SessionSwitch(int swtch) {
 	session = swtch;
 	log("switched session");
 }
