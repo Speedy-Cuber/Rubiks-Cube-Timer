@@ -24,13 +24,11 @@ struct solve {
 		scramble = in;
 		Time = 0;
 		plustwo = false;
-		log("scramble added");
 	}
 	solve(float in, std::string inw, bool inb) {
 		Time = in;
 		scramble = inw;
 		plustwo = inb;
-		log("solve read");
 	}
 };
 
@@ -161,7 +159,6 @@ void DataManager(int casenum, int layer_number, int layer_number_new) {
 		}
 		solves.emplace_back(Scrambler(layer_number));
 		CheckBest();
-		log("created new solve;");
 		break;
 		}
 	case 1:
@@ -181,7 +178,6 @@ void DataManager(int casenum, int layer_number, int layer_number_new) {
 		read(layer_number_new);
 		solves.reserve(100);
 		solves.emplace_back(Scrambler(layer_number_new));
-		log("created new solve");
 		SessionSwitch(layer_number_new);
 		TypeSwitch(0);
 		RecountBestTimes();

@@ -43,7 +43,6 @@ int main() {
 		case space:
 			Timer(session);
 			DataManager(current_type, session, newsess);
-			log("time saved");
 			DefaultScreen();
 			break;
 		case key_two:
@@ -100,10 +99,8 @@ int main() {
 
 void TypeSwitch(int swtch) {
 	current_type = swtch;
-	log("switched current_type");
 }
 
 void SessionSwitch(int swtch) {
 	session = swtch;
-	log("switched session");
 }
