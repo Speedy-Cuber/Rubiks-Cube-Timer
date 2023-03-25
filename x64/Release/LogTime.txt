@@ -1,0 +1,9 @@
+Time taken to read files: 4.49369
+Time taken to write files: 10.4319
+Time taken to read files: 0.882687
+Time taken to read files: 0.888725
+Time taken to read files: 0.0486528
+Time taken to write files: 0.103653
+Time taken to read files: 0.0456535
+Time taken to read files: 0.0235047
+Time taken to write files: 0.0443477

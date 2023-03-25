@@ -1,0 +1,10 @@
+Time taken to execue std::numeric_limits<float>::max(): 3e-07
+Time taken to execue std::numeric_limits<float>::max(): 0
+Time taken to read files: 0.0004348
+Time taken to read files: 0.0004294
+Time taken to write files: 0.000524
+Time taken to read files: 0.000208
+Time taken to write files: 0.0006496
+Time taken to read files: 0.0002972
+Time taken to write files: 0.0002835
+Time taken to read files: 0.0002805

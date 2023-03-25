@@ -26,3 +26,100 @@ session_size read
 session_size read
 wrote to session_size
 close complete
+session_size read
+session file read
+initiated new session;
+session_size read
+session file read
+initiated new session;
+session_size read
+session file read
+initiated new session;
+session_size read
+session file read
+initiated new session;
+session_size read
+session file read
+initiated new session;
+session_size read
+session file read
+initiated new session;
+session_size read
+session file read
+initiated new session;
+wrote to session
+session_size read
+session_size read
+session_size read
+session_size read
+session_size read
+wrote to session_size
+close complete
+session_size read
+session file read
+initiated new session;
+wrote to session
+session_size read
+session_size read
+session_size read
+session_size read
+session_size read
+wrote to session_size
+session_size read
+Created session
+session_size read
+session file read
+session switched;
+wrote to session
+session_size read
+session_size read
+session_size read
+session_size read
+session_size read
+wrote to session_size
+session_size read
+session_size read
+session file read
+session switched;
+session_size read
+session file read
+initiated new session;
+wrote to session
+session_size read
+session_size read
+session_size read
+session_size read
+session_size read
+wrote to session_size
+close complete
+session_size read
+session file read
+initiated new session;
+session_size read
+session file read
+initiated new session;
+session_size read
+session file read
+initiated new session;
+wrote to session
+session_size read
+session_size read
+session_size read
+session_size read
+session_size read
+wrote to session_size
+close complete
+session_size read
+session file read
+initiated new session;
+session_size read
+session file read
+initiated new session;
+wrote to session
+session_size read
+session_size read
+session_size read
+session_size read
+session_size read
+wrote to session_size
+close complete

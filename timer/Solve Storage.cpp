@@ -7,6 +7,7 @@
 #include <conio.h>
 #include "function header.h"
 #include <limits>
+#include "debug timer class.h"
 
 void RecountBestTimes();
 void CheckBest();
@@ -82,6 +83,7 @@ bool stringtobool(std::string in) {
 }
 
 void read(int layer_number) {
+	timer a("Time taken to read files: ");
 	std::string filename[5] = { "twobytwo.ses", "threebythree.ses", "fourbyfour.ses", "fivebyfive.ses", "3x3OH.ses" };
 	std::ifstream read;
 	read.open(filename[layer_number]);
@@ -123,6 +125,7 @@ std::string booltostring(bool in) {
 
 //Record a solves in a session. Add ability to add different sessions, use vector to store session names in the session_size.size file, maybe change to Session.info
 void write(int layer_number) {
+	timer a("Time taken to write files: ");
 	std::string filename[5] = { "twobytwo.ses", "threebythree.ses", "fourbyfour.ses", "fivebyfive.ses", "3x3OH.ses" };
 	std::ofstream write;
 	write.open(filename[layer_number]);
@@ -134,18 +137,6 @@ void write(int layer_number) {
 	write.close();
 	log("wrote to session");
 }
-
-//instead of switch and case statement, make functions that do the individual parts of the entire data_manager_f() function and call those individually in the main function.
-
-void InitializeSession() {
-
-}
-
-void CloseSession() {
-
-}
-
-
 
 void DataManager(int casenum, int layer_number, int layer_number_new) {
 	switch (casenum) {
@@ -240,6 +231,9 @@ float GetAverage(float averagenumber) {
 				BestTime = timearray[i];
 			}
 			total = total + timearray[i];
+		}
+		if (BestTime == std::numeric_limits<float>::max()) {
+			BestTime = 0;
 		}
 		total = total - worsttime - BestTime;
 		float average = total / (averagenumber - 2);
@@ -370,8 +364,7 @@ float GetBestAvg(int AoLength) {
 		return 0;
 	}
 	float ao[100] = { 0 };
-	float average = 0;
-	float bao = 0;
+	float bao = std::numeric_limits<float>::max();
 	for (int i = 0; i < solves.size() - AoLength; i++) {
 		float total = 0;
 		float BestInAverage = std::numeric_limits<float>::max();
@@ -382,35 +375,35 @@ float GetBestAvg(int AoLength) {
 			if (BestInAverage > ao[j]) {
 				BestInAverage = ao[j];
 			}
-			if (WorstInAverage < ao[j]) {
+			else if (WorstInAverage < ao[j]) {
 				WorstInAverage = ao[j];
 			}
 		}
 		total = total - (BestInAverage + WorstInAverage);
 		float average = total / (AoLength - 2);
-		if (bao == 0) {
-			bao = average;
-		}
 		if (average < bao) {
 			bao = average;
 		}
+	}
+	if (bao == std::numeric_limits<float>::max()) {
+		return 0;
 	}
 	return RoundMil_f(bao);
 }
 
 //iterate through instances of solve class and find best times and averages. Called when opening a new .sess file at aplication start or when switching sessions.
 void RecountBestTimes() {
-	BestTime = 0;
+	BestTime = std::numeric_limits<float>::max();
 	bao5 = 0;
 	bao12 = 0;
 	bao100 = 0;
 	for (int i = 0; i < solves.size() - 1; i++) {
-		if (BestTime == 0) {
-			BestTime = solves[0].Time;
-		}
 		if (solves[i].Time < BestTime) {
 			BestTime = solves[i].Time;
 		}
+	}
+	if (BestTime == std::numeric_limits<float>::max()) {
+		BestTime = 0;
 	}
 	bao5 = GetBestAvg(5);
 	bao12 = GetBestAvg(12);
