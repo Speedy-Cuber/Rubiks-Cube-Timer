@@ -8,43 +8,45 @@
 
 #define space 32
 
-double RoundMil_f(double& time) {	//Round numbers to the nearest thousandth
+float RoundMil_f(float& time) {	//Round numbers to the nearest thousandth
 	time = time * 1000;
 	time = std::round(time);
 	time = time / 1000;
 	return time;
 }
 
-static bool isoff = false;
+static bool On = true;
 
-void timerout() {
-	double onscreentime = 0;
+//display seconds elapsed on screen
+void TimeOut() {
+	float OnScreenTime = 0;
 	std::chrono::time_point<std::chrono::steady_clock> start, end;
 	start = std::chrono::high_resolution_clock::now();
-	std::chrono::duration<double, std::ratio<1, 1>> duration;
-	while (!isoff) {
+	std::chrono::duration<float, std::ratio<1, 1>> duration;
+	while (On) {
 		system("cls");
 		end = std::chrono::high_resolution_clock::now();
 		duration = end - start;
-		double time = duration.count();
-		secondstodisplay(RoundMil_f(time));
+		OnScreenTime = duration.count();
+		secondstodisplay(RoundMil_f(OnScreenTime));
 		std::this_thread::sleep_for(std::chrono::milliseconds(80));
 	}
-	isoff = false;
+	On = true;
 }
 
-void timer_f(int layer_number) {
-	double time = 0;
+//Record the official time of the solve
+void Timer(int layer_number) {
+	float time = 0;
 	std::chrono::time_point<std::chrono::steady_clock> start, end;
-	std::chrono::duration<double, std::ratio<1, 1>> duration;
+	std::chrono::duration<float, std::ratio<1, 1>> duration;
 	start = std::chrono::high_resolution_clock::now();
 	int ch = 0;
-	std::thread ostimer(timerout);
+	std::thread ostimer(TimeOut);
 	ch = _getch();
 	end = std::chrono::high_resolution_clock::now();
-	isoff = true;
+	On = false;
 	ostimer.join();
 	duration = end - start;
 	time = duration.count();
-	set_time_f(RoundMil_f(time));
+	SetTime(RoundMil_f(time));
 }

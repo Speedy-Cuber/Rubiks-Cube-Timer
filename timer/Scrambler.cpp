@@ -3,148 +3,144 @@
 #include <ctime>
 #include "function header.h"
 
-int rannum_f(int maxnum) {
+int RandNum(int maxnum) {
 	return (rand() % maxnum);
 }
 
-std::string twobytwo(){
-	std::string moves[9] = { "R ", "R' ", "R2 ", "U ", "U' ", "U2 ", "F ", "F' ", "F2 " };
-	std::string scramble = "";
-	int x = rannum_f(3);
-	int y = rannum_f(3);
-	int xarray[60] = { 0 };
-	scramble = moves[3 * x + y];
-	int i = 0;
-	xarray[i] = x;
-	i++;
-	while (i < 2) {
-		x = rannum_f(3);
-		y = rannum_f(3);
-		if (x != xarray[0]) {
-			xarray[i] = x;
-			scramble = scramble + moves[3 * x + y];
-			i++;
-		}
-	}
-	while (i < 9) {
-		x = rannum_f(3);
-		y = rannum_f(3);
-		if (xarray[i - 1] != x) {
-			if (xarray[i - 2] == x) {
-				if ((x + xarray[i - 1]) != 1 && (x + xarray[i - 1]) != 5 && (x + xarray[i - 1]) != 9) {
-					xarray[i] = x;
-					scramble = scramble + moves[3 * x + y];
-					i++;
-				}
-			}
-			else {
-				xarray[i] = x;
-				scramble = scramble + moves[3 * x + y];
+std::string Scrambler(int& layer_number) {
+	int ScrambleLengthOne = 0;
+	int ScrambleLength = 0;
+	int gen = 0;
+	if (layer_number == 0) {
+		std::string Moves[9] = { "R ", "R' ", "R2 ", "U ", "U' ", "U2 ", "F ", "F' ", "F2 " };
+		std::string Scramble = "";
+		int x = RandNum(3);
+		int y = RandNum(3);
+		int XArray[60] = { 0 };
+		Scramble = Moves[3 * x + y];
+		int i = 0;
+		XArray[i] = x;
+		i++;
+		while (i < 2) {
+			x = RandNum(3);
+			y = RandNum(3);
+			if (x != XArray[0]) {
+				XArray[i] = x;
+				Scramble = Scramble + Moves[3 * x + y];
 				i++;
 			}
 		}
-	}
-	return scramble;
-}
-
-std::string scramble_f(int& layer_number) {
-	int scramble_length_one = 0;
-	int scramble_length = 0;
-	std::string moves[36] = { "F  ", "F' ", "F2 ", "Fw ", "Fw' ", "Fw2 ", "B  ", "B' ", "B2 ", "Bw ", "Bw' ", "Bw2 ", "U  ", "U' ", "U2 ", "Uw ", "Uw' ", "Uw2 ", "D  ", "D' ", "D2 ", "Dw ", "Dw' ", "Dw2 ", "L  ", "L' ", "L2 ", "Lw ", "Lw' ", "Lw2 ", "R  ", "R' ", "R2 ", "Rw ", "Rw' ", "Rw2 " };
-	int gen = 0;
-	if (layer_number == 0) {
-		return twobytwo();
+		while (i < 9) {
+			x = RandNum(3);
+			y = RandNum(3);
+			if (XArray[i - 1] != x) {
+				if (XArray[i - 2] == x) {
+					if ((x + XArray[i - 1]) != 1 && (x + XArray[i - 1]) != 5 && (x + XArray[i - 1]) != 9) {
+						XArray[i] = x;
+						Scramble = Scramble + Moves[3 * x + y];
+						i++;
+					}
+				}
+				else {
+					XArray[i] = x;
+					Scramble = Scramble + Moves[3 * x + y];
+					i++;
+				}
+			}
+		}
+		return Scramble;
 	}
 	else if (layer_number == 1||layer_number == 4) {
 		gen = 6;
-		scramble_length_one = 25;
-		scramble_length = 0;
+		ScrambleLengthOne = 25;
+		ScrambleLength = 0;
 	}
 	else if (layer_number == 2) {
 		gen = 6;
-		scramble_length_one = 25;
-		scramble_length = 50;
+		ScrambleLengthOne = 25;
+		ScrambleLength = 50;
 	}
 	else if (layer_number == 3) {
 		gen = 6;
-		scramble_length_one = 30;
-		scramble_length = 60;
+		ScrambleLengthOne = 30;
+		ScrambleLength = 60;
 	}
 	else {
-		log("Error in scramble");
+		log("Error in Scramble");
 	}
-	std::string scramble = "";
-	int x = rannum_f(gen);
-	int y = rannum_f(3);
-	int xarray[60] = { 0 };
-	scramble = scramble + moves[6 * x + y];
+	std::string Moves[36] = { "F  ", "F' ", "F2 ", "Fw ", "Fw' ", "Fw2 ", "B  ", "B' ", "B2 ", "Bw ", "Bw' ", "Bw2 ", "U  ", "U' ", "U2 ", "Uw ", "Uw' ", "Uw2 ", "D  ", "D' ", "D2 ", "Dw ", "Dw' ", "Dw2 ", "L  ", "L' ", "L2 ", "Lw ", "Lw' ", "Lw2 ", "R  ", "R' ", "R2 ", "Rw ", "Rw' ", "Rw2 " };
+	std::string Scramble = "";
+	int x = RandNum(gen);
+	int y = RandNum(3);
+	int XArray[60] = { 0 };
+	Scramble = Scramble + Moves[6 * x + y];
 	int i = 0;
-	xarray[i] = x;
+	XArray[i] = x;
 	i++;
 	while (i < 2) {
-		x = rannum_f(gen);
-		y = rannum_f(3);
-		if (x != xarray[0]) {
-			xarray[i] = x;
-			scramble = scramble + moves[6 * x + y];
+		x = RandNum(gen);
+		y = RandNum(3);
+		if (x != XArray[0]) {
+			XArray[i] = x;
+			Scramble = Scramble + Moves[6 * x + y];
 			i++;
 		}
 	}
-	while (i < scramble_length_one) {
-		x = rannum_f(gen);
-		y = rannum_f(3);
-		if (xarray[i - 1] != x) {
-			if (xarray[i - 2] == x) {
-				if ((x + xarray[i - 1]) != 1 && (x + xarray[i - 1]) != 5 && (x + xarray[i - 1]) != 9) {
-					xarray[i] = x;
-					scramble = scramble + moves[6 * x + y];
+	while (i < ScrambleLengthOne) {
+		x = RandNum(gen);
+		y = RandNum(3);
+		if (XArray[i - 1] != x) {
+			if (XArray[i - 2] == x) {
+				if ((x + XArray[i - 1]) != 1 && (x + XArray[i - 1]) != 5 && (x + XArray[i - 1]) != 9) {
+					XArray[i] = x;
+					Scramble = Scramble + Moves[6 * x + y];
 					i++;
 				}
 			}
 			else {
-				xarray[i] = x;
-				scramble = scramble + moves[6 * x + y];
+				XArray[i] = x;
+				Scramble = Scramble + Moves[6 * x + y];
 				i++;
 			}
 		}
 	}
-	if (scramble_length == 50) {
-		scramble = scramble + "						 ";
+	if (ScrambleLength == 50) {
+		Scramble = Scramble + "						 ";
 	}
-	else if (scramble_length == 60) {
-		scramble = scramble + "					";
+	else if (ScrambleLength == 60) {
+		Scramble = Scramble + "					";
 
 	}
-	int yarray[60] = { 0 };
-	while (i < scramble_length) {
-		x = rannum_f(6);
-		y = rannum_f(6);
-		if (xarray[i - 1] != x) {
-			if (xarray[i - 2] == x) {
-				if ((x + xarray[i - 1]) != 1 && (x + xarray[i - 1]) != 5 && (x + xarray[i - 1]) != 9) {
-					xarray[i] = x;
-					yarray[i] = y;
-					scramble = scramble + moves[6 * x + y];
+	int YArray[60] = { 0 };
+	while (i < ScrambleLength) {
+		x = RandNum(6);
+		y = RandNum(6);
+		if (XArray[i - 1] != x) {
+			if (XArray[i - 2] == x) {
+				if ((x + XArray[i - 1]) != 1 && (x + XArray[i - 1]) != 5 && (x + XArray[i - 1]) != 9) {
+					XArray[i] = x;
+					YArray[i] = y;
+					Scramble = Scramble + Moves[6 * x + y];
 					i++;
 				}
 			}
-			else if ((x + xarray[i - 1]) != 1 && (x + xarray[i - 1]) != 5 && (x + xarray[i - 1]) != 9) {
-					xarray[i] = x;
-					yarray[i] = y;
-					scramble = scramble + moves[6 * x + y];
+			else if ((x + XArray[i - 1]) != 1 && (x + XArray[i - 1]) != 5 && (x + XArray[i - 1]) != 9) {
+					XArray[i] = x;
+					YArray[i] = y;
+					Scramble = Scramble + Moves[6 * x + y];
 					i++;
 			}
 		}
-		else if ((yarray[i - 1] > 2 && y < 3) || (yarray[i - 1] < 3 && y > 2)) {
-			if (xarray[i - 2] == x && xarray[i - 1] != x) {
-				if ((x + xarray[i - 1]) != 1 && (x + xarray[i - 1]) != 5 && (x + xarray[i - 1]) != 9) {
-					xarray[i] = x;
-					yarray[i] = y;
-					scramble = scramble + moves[6 * x + y];
+		else if ((YArray[i - 1] > 2 && y < 3) || (YArray[i - 1] < 3 && y > 2)) {
+			if (XArray[i - 2] == x && XArray[i - 1] != x) {
+				if ((x + XArray[i - 1]) != 1 && (x + XArray[i - 1]) != 5 && (x + XArray[i - 1]) != 9) {
+					XArray[i] = x;
+					YArray[i] = y;
+					Scramble = Scramble + Moves[6 * x + y];
 					i++;
 				}
 			}
 		}
 	}
-	return scramble;
+	return Scramble;
 }

@@ -1,15 +1,28 @@
 Created session
-session_size.size created
 session_size read
 session file read
-scramble added
-switched current_type
 initiated new session;
-scramble added
-created new solve;
-time saved
+wrote to session
 session_size read
-session file read
-scramble added
-switched current_type
-initiated new session;
+session_size read
+session_size read
+session_size read
+session_size read
+wrote to session_size
+reserved solves
+wrote to session
+session_size read
+session_size read
+session_size read
+session_size read
+session_size read
+wrote to session_size
+reserved solves
+wrote to session
+session_size read
+session_size read
+session_size read
+session_size read
+session_size read
+wrote to session_size
+close complete
