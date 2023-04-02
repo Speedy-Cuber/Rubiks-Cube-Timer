@@ -1,15 +1,15 @@
-﻿  Solve Storage.cpp
+﻿  Log.cpp
+  Solve Storage.cpp
 C:\DEV\Speedy-Cuber\Rubiks-Cube-Timer\timer\Solve Storage.cpp(66,42): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data
-C:\DEV\Speedy-Cuber\Rubiks-Cube-Timer\timer\Solve Storage.cpp(107,19): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 C:\DEV\Speedy-Cuber\Rubiks-Cube-Timer\timer\Solve Storage.cpp(189,15): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
 C:\DEV\Speedy-Cuber\Rubiks-Cube-Timer\timer\Solve Storage.cpp(190,17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 C:\DEV\Speedy-Cuber\Rubiks-Cube-Timer\timer\Solve Storage.cpp(210,30): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\DEV\Speedy-Cuber\Rubiks-Cube-Timer\timer\Solve Storage.cpp(289,22): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-C:\DEV\Speedy-Cuber\Rubiks-Cube-Timer\timer\Solve Storage.cpp(327,68): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\DEV\Speedy-Cuber\Rubiks-Cube-Timer\timer\Solve Storage.cpp(333,68): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\DEV\Speedy-Cuber\Rubiks-Cube-Timer\timer\Solve Storage.cpp(286,22): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\DEV\Speedy-Cuber\Rubiks-Cube-Timer\timer\Solve Storage.cpp(324,68): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\DEV\Speedy-Cuber\Rubiks-Cube-Timer\timer\Solve Storage.cpp(330,68): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   Generating code
-  12 of 442 functions ( 2.7%) were compiled, the rest were copied from previous compilation.
+  5 of 442 functions ( 1.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    2 functions had inline decision re-evaluated but remain unchanged
+    9 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   timer.vcxproj -> C:\DEV\Speedy-Cuber\Rubiks-Cube-Timer\x64\Release\timer.exe

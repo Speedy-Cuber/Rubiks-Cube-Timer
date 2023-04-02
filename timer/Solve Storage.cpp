@@ -104,7 +104,7 @@ void read(int layer_number) {
 	while (std::getline(read, all)) {
 		std::stringstream ss(all);
 		std::getline(ss, intime, ',');
-		time = std::stod(intime);
+		time = std::stof(intime);
 		std::getline(ss, in, ',');
 		std::getline(ss, plustwo, ',');
 		plus_two = stringtobool(plustwo);
@@ -231,9 +231,6 @@ float GetAverage(float averagenumber) {
 				BestTime = timearray[i];
 			}
 			total = total + timearray[i];
-		}
-		if (BestTime == std::numeric_limits<float>::max()) {
-			BestTime = 0;
 		}
 		total = total - worsttime - BestTime;
 		float average = total / (averagenumber - 2);

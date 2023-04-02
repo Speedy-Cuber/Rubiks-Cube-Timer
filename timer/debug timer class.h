@@ -9,12 +9,14 @@ private:
 	std::chrono::time_point<std::chrono::steady_clock> start, end;
 	std::chrono::duration<float, std::ratio<1, 1>> duration;
 	std::string LogMessage;
-public:
+
 	void LogTime(std::string log, float time) {
 		std::ofstream write("LogTime.txt", std::ios::out | std::ios::app);
 		write << log << time << std::endl;
 		write.close();
 	}
+public:
+
 
 	timer(std::string Log) {
 		LogMessage = Log;

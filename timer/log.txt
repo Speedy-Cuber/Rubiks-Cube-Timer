@@ -7447,3 +7447,12 @@ session_size read
 session_size read
 session file read
 session switched;
+session_size read
+session file read
+initiated new session;
+session_size read
+session file read
+initiated new session;
+session_size read
+session file read
+initiated new session;

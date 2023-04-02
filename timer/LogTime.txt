@@ -8,3 +8,6 @@ Time taken to write files: 0.0006496
 Time taken to read files: 0.0002972
 Time taken to write files: 0.0002835
 Time taken to read files: 0.0002805
+Time taken to read files: 0.0005061
+Time taken to read files: 0.0048965
+Time taken to read files: 0.0087608
